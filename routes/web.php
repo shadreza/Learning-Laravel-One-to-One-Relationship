@@ -60,3 +60,6 @@ Route::get('delete', function () {
     return $user->address()->delete();
     return 'done';
 });
+
+
+//CRUD Done in one-to-one rel app
