@@ -21,7 +21,7 @@ Route::get('/', function () {
 
 // save address
 Route::get('insert', function () {
-    $user = User::findOrFail(1);
+    $user = User::findOrFail(2);
     $address = new Address(['name' => 'Mohammadpur']);
     $user->address()->save($address);
     return $address . 'saved';
@@ -40,7 +40,23 @@ Route::get('update', function () {
 // read user
 
 Route::get('read/{id}', function ($id) {
-    // $address = Address::where('user_id', 1);
     $user = User::findOrFail($id);
     return $user->name;
+});
+
+
+// delete user
+
+Route::get('delete/{id}', function ($id) {
+    // $address = Address::where('user_id', 1);
+    $user = User::findOrFail($id);
+    return $user->delete();
+});
+
+// delete user's address
+
+Route::get('delete', function () {
+    $user = User::findOrFail(2);
+    return $user->address()->delete();
+    return 'done';
 });
