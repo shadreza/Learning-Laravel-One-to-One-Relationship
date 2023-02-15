@@ -35,3 +35,12 @@ Route::get('update', function () {
     $address->name = "Updated Location &****& Point";
     $address->save();
 });
+
+
+// read user
+
+Route::get('read/{id}', function ($id) {
+    // $address = Address::where('user_id', 1);
+    $user = User::findOrFail($id);
+    return $user->name;
+});
