@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\User;
+use App\Models\Address;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+// save address
+Route::get('insert', function () {
+    $user = User::findOrFail(1);
+    $address = new Address(['name' => 'Mohammadpur']);
+    $user->address()->save($address);
+    return $address . 'saved';
 });
