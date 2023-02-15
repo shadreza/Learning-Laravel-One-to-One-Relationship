@@ -26,3 +26,12 @@ Route::get('insert', function () {
     $user->address()->save($address);
     return $address . 'saved';
 });
+
+// update address
+
+Route::get('update', function () {
+    // $address = Address::where('user_id', 1);
+    $address = Address::whereUserId(1)->first();
+    $address->name = "Updated Location &****& Point";
+    $address->save();
+});
